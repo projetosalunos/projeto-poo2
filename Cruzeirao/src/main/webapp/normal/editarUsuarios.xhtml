@@ -1,0 +1,145 @@
+
+<ui:composition template="templateNormal.xhtml"
+	xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:p="http://primefaces.org/ui"
+	xmlns:ui2="http://java.sun.com/jsf/facelets"
+>
+	
+	<ui:define name="title">
+		<h:outputText value="#{msg['pages.cadastroUsuarios.title']}" />
+	</ui:define>
+	
+
+	<ui:define name="principal">
+	  
+	  <h1><p:outputLabel value="#{msg['pages.cadastroUsuarios.menu']}"/></h1>
+	 
+	<h:form id= "formTableUsuario">
+   <p:dataTable value="#{usuarioManagedBean.usuarios}"
+                var="aux"
+                id="tabelaUsuario"
+				editable="true"
+            
+                paginator="true"
+                rows="5"
+                paginatorTemplate="{CurrentPageReport} {FirstPageLink} {PreviousPageLink} {PageLinks} {NextPageLink} {LastPageLink} {RowsPerPageDropdown}"
+                rowsPerPageTemplate="5,10,15"
+   >
+   
+   
+    <p:ajax event="rowEdit" listener="#{usuarioManagedBean.onRowEdit}" update="tabelaUsuario" />
+      
+	  
+	  <p:column headerText="#{msg['pages.cadastroTime.nome']}" filterBy="#{aux.nome}">
+    
+    			<p:cellEditor>
+					<f:facet name="output">
+						<p:outputLabel value="#{aux.nome}" />
+					</f:facet>
+					<f:facet name="input">
+						<p:inputText id="usuarioNome" value="#{aux.nome}"
+							style="width:100%" />
+					</f:facet>
+				</p:cellEditor>
+	  </p:column>
+	  
+	   <p:column headerText="CPF" filterBy="#{aux.CPF}">
+    
+    			<p:cellEditor>
+					<f:facet name="output">
+						<p:outputLabel value="#{aux.CPF}" />
+					</f:facet>
+					<f:facet name="input">
+						<p:inputText id="usuarioCPF" value="#{aux.CPF}"
+							style="width:100%" />
+					</f:facet>
+				</p:cellEditor>
+	  </p:column>
+	 
+	 <p:column headerText="RG" filterBy="#{aux.RG}">
+    
+    			<p:cellEditor>
+					<f:facet name="output">
+						<p:outputLabel value="#{aux.RG}" />
+					</f:facet>
+					<f:facet name="input">
+						<p:inputText id="usuarioRG" value="#{aux.RG}"
+							style="width:100%" />
+					</f:facet>
+				</p:cellEditor>
+	  </p:column>
+	  
+	  <p:column headerText="Email" filterBy="#{aux.email}">
+    
+    			<p:cellEditor>
+					<f:facet name="output">
+						<p:outputLabel value="#{aux.email}" />
+					</f:facet>
+					<f:facet name="input">
+						<p:inputText id="usuarioEmail" value="#{aux.email}"
+							style="width:100%" />
+					</f:facet>
+				</p:cellEditor>
+	  </p:column>
+	  
+	  <p:column headerText="#{msg['pages.cadastroUsuario.dataNascimento']}" filterBy="#{aux.dataNascimento}">
+    
+    			<p:cellEditor>
+					<f:facet name="output">
+						<p:outputLabel value="#{aux.dataNascimento}" />
+					</f:facet>
+					<f:facet name="input">
+						<p:inputText id="usuarioDataNascimento" value="#{aux.dataNascimento}"
+							style="width:100%" />
+					</f:facet>
+				</p:cellEditor>
+	  </p:column>
+	  
+	  <p:column headerText="#{msg['pages.cadastroCategoria.sexo']}" filterBy="#{aux.sexo}">
+    
+    			<p:cellEditor>
+					<f:facet name="output">
+						<p:outputLabel value="#{aux.sexo}" />
+					</f:facet>
+					<f:facet name="input">
+						<p:inputText id="usuarioSexo" value="#{aux.sexo}"
+							style="width:100%" />
+					</f:facet>
+				</p:cellEditor>
+	  </p:column>
+   
+		<p:column headerText="#{msg['pages.cadastroUsuario.role']}" filterBy="#{aux.role}">
+    
+    			<p:cellEditor>
+					<f:facet name="output">
+						<p:outputLabel value="#{aux.role}" />
+					</f:facet>
+					<f:facet name="input">
+						<p:inputText id="usuarioRole" value="#{aux.role}"
+							style="width:100%" />
+					</f:facet>
+				</p:cellEditor>	
+	  </p:column> 
+	  
+	  <p:column style="width:70px" headerText="#{msg['pages.cadastroTime.optionTable']}">
+					
+					<p:rowEditor />
+					
+					<p:commandLink id="remover" styleClass="ui-icon ui-icon-trash"
+						style="text-align:center"
+						actionListener="#{usuarioManagedBean.remover(aux)}"
+						update="tabelaUsuario" />
+	  </p:column>
+   </p:dataTable>	
+	   </h:form>
+	</ui:define>
+</ui:composition>
+
+
+
+
+
+

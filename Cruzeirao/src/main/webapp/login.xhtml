@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:p="http://primefaces.org/ui"
+	lang="#{localeBean.language}"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	>
+<h:head>
+	<meta charset="UTF-8" />
+</h:head>
+			<p:layoutUnit position="center" size="240">
+				<div align="center"><ui:include src="/pages/comuns/cabecalho.xhtml" /></div>
+				<ui:insert name="principal" />
+			</p:layoutUnit>
+<h:body>
+		
+          <f:metadata>
+			<f:event listener="#{loginManagedBean.preRender}"
+				type="preRenderView" />
+		  </f:metadata>
+		  
+          <div align="center">
+            <p:outputLabel  value="Projeto Cruzeirão - Faça seu Login"/>  
+            
+            <p:growl id="messages" sticky="false" life="3000"
+						for="mensagemGrowl" autoUpdate="true" />
+						
+ 			<h:form id="login" prependId="false">
+						<p:focus />
+						<h:panelGrid id="panel" style="margin:3%; text-align: center">
+
+							<p:inputText type="text" id="username" autocomplete="off" size="30"
+								maxlength="80" label="Usuário">
+								<p:watermark for="username" value="Usuário" />
+							</p:inputText>
+
+							<p:password  size="30" id="password" value="Senha:" maxlength="20">
+								<p:watermark for="password" value="Senha" />
+							</p:password>
+						</h:panelGrid>
+						
+						<p:commandButton value="#{msg['login']}" action="#{loginManaged.login}" ajax="false"/>
+						
+						<p:commandButton value="#Cadastro" action="/cadastroPessoa.xhtml" />
+					
+					</h:form>
+              </div>
+
+</h:body>
+</html>

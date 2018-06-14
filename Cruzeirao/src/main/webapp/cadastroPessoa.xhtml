@@ -1,0 +1,149 @@
+
+<ui:composition template="/pages/templateInicio.xhtml"
+	xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:p="http://primefaces.org/ui"
+	xmlns:ui2="http://java.sun.com/jsf/facelets"
+	xmlns:tm="http://java.sun.com/jsf/composite/terminal/1_0/components">
+	
+	
+	<ui:define name="title">
+		<h:outputText value="#{msg['pages.cadastroPessoa.title']}" />
+	</ui:define>
+
+	<ui:define name="principal"> 
+	
+		  <h1><p:outputLabel value="#{msg['pages.cadastroUsuario.cadastro']}"/></h1>
+		  
+	<h:form id="formUsuario">	
+		  
+		  <p:growl id="growl" sticky="true" showDetail="true"/>
+		  
+		  
+		  
+		   <p:wizard flowListener="#{usuarioManagedBean.onFlowProcess}">
+        <p:tab id="personal" title="#Personal">
+            <p:panel header="#Personal Details">
+                <p:messages />
+                <h:panelGrid columns="2" >
+                    <h:outputText value="#{msg['pages.cadastroCampeonato.nome']}*" />
+                    <p:inputText value="#{usuarioManagedBean.usuario.nome}" required="true" />
+ 
+                    <h:outputText value="#{msg['pages.cadastroUsuario.dataNascimento']}*" />
+                    <p:calendar id="button" value="#{usuarioManagedBean.usuario.dataNascimento}" required="true"  showOn="button" mindate="1/1/72" maxdate="12/31/00"/>
+		       
+		       		<p:outputLabel value="#{msg['pages.cadastroUsuario.CPF']}*" />
+		      		<p:inputText value="#{usuarioManagedBean.usuario.CPF}" required="true" />
+
+ 					<p:outputLabel value="#{msg['pages.cadastroUsuario.RG']}" />
+		      		<p:inputText value="#{usuarioManagedBean.usuario.RG}" />
+		      				      
+		       	    <p:outputLabel for="basic" value="#{msg['pages.cadastroUsuario.sexo']}*" />
+		       	    <p:selectOneListbox id="basic" value="#{usuarioManagedBean.usuario.sexo}" required="true" >
+           				 <f:selectItem itemLabel="Feminino"  itemValue="Feminino" />
+            			 <f:selectItem itemLabel="Masculino" itemValue="Masulino" />
+        			</p:selectOneListbox>
+		      	    <!--  <p:inputText value="#{usuarioManagedBean.usuario.sexo}" required="true" /> --> 
+                 
+                </h:panelGrid>
+            </p:panel>
+        </p:tab>
+ 
+
+        <p:tab id="contact" title="#Contact">
+            <p:panel header="#Contact Information">
+                <p:messages />
+                <h:panelGrid columns="2" >
+                    
+                    <p:outputLabel value="#{msg['pages.cadastroUsuario.email']}*" />
+		     	    <p:inputText value="#{usuarioManagedBean.usuario.email}" required="true" />
+ 
+                    <h:outputText value="#{msg['pages.cadastroUsuario.telefoneFixo']}" />
+                    <p:inputText value="#{usuarioManagedBean.usuario.telefoneFixo}"/>
+ 
+                    <h:outputText value="#{msg['pages.cadastroUsuario.telefoneMovel']}" />
+                    <p:inputText value="#{usuarioManagedBean.usuario.telefoneMovel}"/>
+                </h:panelGrid>
+            </p:panel>
+        </p:tab>
+        
+        <p:tab id="senha" title="#Cadastro">
+            <p:panel header="#Cadastro">
+                <h:panelGrid id="Cadastro" columns="3" >
+                    <h:panelGrid columns="2" >
+                       
+                        <h:outputText value="#User*" />
+                        <p:inputText value="#{usuarioManagedBean.usuario.username}" required="true" />                    
+ 		
+ 						<h:outputLabel for="pwd2" value="#Password Confirmation*" />
+     				  	<p:password value="#{usuarioManagedBean.usuario.password}"  required="true" />
+ 		
+ 
+                    </h:panelGrid>
+                </h:panelGrid>
+                
+            </p:panel>
+        </p:tab>
+ 
+        <p:tab id="confirm" title="#Confirmation">
+            <p:panel header="#Confirmation">
+                <h:panelGrid id="confirmation" columns="3" columnClasses="grid,grid,grid">
+                    <h:panelGrid columns="2" columnClasses="label, value">
+                        <h:outputText value="#{msg['pages.cadastroCampeonato.nome']}" />
+                        <h:outputText value="#{usuarioManagedBean.usuario.nome}" />
+ 
+                        <h:outputText value="#User" />
+                        <h:outputText value="#{usuarioManagedBean.usuario.username}" />
+ 
+                        <h:outputText value="#{msg['pages.cadastroUsuario.CPF']}" />
+                        <h:outputText value="#{usuarioManagedBean.usuario.CPF}" />
+                    </h:panelGrid>
+ 
+                    <h:panelGrid columns="2" columnClasses="label, value">
+                        <h:outputText value="#{msg['pages.cadastroUsuario.RG']}" />
+                        <h:outputText value="#{usuarioManagedBean.usuario.RG}" />
+ 
+                        <h:outputText value="#{msg['pages.cadastroUsuario.sexo']}" />
+                        <h:outputText value="#{userWizard.user.postalCode}" />
+ 
+ 						<h:outputText value="#{msg['pages.cadastroUsuario.dataNascimento']}" />
+                        <h:outputText value="#{usuarioManagedBean.usuario.dataNascimento}" />              
+                    </h:panelGrid>
+ 
+                    <h:panelGrid columns="2" >
+                        <h:outputText value="#{msg['pages.cadastroUsuario.email']}" />
+                        <h:outputText value="#{usuarioManagedBean.usuario.email}" />
+                        
+                        <h:outputText value="#{msg['pages.cadastroUsuario.telefoneFixo']}" />
+                        <h:outputText value="#{usuarioManagedBean.usuario.telefoneFixo}"/>
+ 
+                        <h:outputText value="#{msg['pages.cadastroUsuario.telefoneMovel']}" />
+                        <h:outputText value="#{usuarioManagedBean.usuario.telefoneMovel}"/>
+ 
+                        <h:outputText />
+                        <h:outputText />
+                    </h:panelGrid>
+                </h:panelGrid>
+ 
+                <p:commandButton value="#{msg['pages.cadastroCampeonato.btnSalvar']}" actionListener="#{usuarioManagedBean.salvar}" update=":formUsuario, formTableUsuario:tabelaUsuario,growl" process="@this"/>
+                <p:commandButton value="#Login" action="/login.xhtmil" />
+            </p:panel>
+        </p:tab>
+    </p:wizard>
+		       
+	</h:form>
+			
+		<h:form id="formTableUsuario">
+	 	  <p:dataTable value="#{usuarioManagedBean.usuarios}"
+	                var="aux"
+	                id="tabelaUsuario"
+	      			 editable="true" >
+	      
+		 	</p:dataTable>	
+		 </h:form>
+		</ui:define>
+	</ui:composition>
+	
+	

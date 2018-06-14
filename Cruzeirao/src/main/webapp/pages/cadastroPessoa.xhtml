@@ -1,0 +1,89 @@
+
+<ui:composition template="templateInicio.xhtml"
+	xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:p="http://primefaces.org/ui"
+	xmlns:ui2="http://java.sun.com/jsf/facelets"
+	xmlns:tm="http://java.sun.com/jsf/composite/terminal/1_0/components">
+	
+	<ui:define name="title">
+		<h:outputText value="#{msg['pages.cadastroPessoa.title']}" />
+	</ui:define>
+
+	<ui:define name="principal"> 
+	<h:form id="formCadastro">	
+	
+	            <p:panelGrid columns="4">
+                 	
+                 	<h:outputText value="#{msg['pages.cadastroTime.nome']}" />
+                    <p:inputText value="#{pessoaManagedBean.pessoa.nome}" required="true" label="Nome"/>
+                    
+                    <h:outputText value="CPF: " />
+                    <p:inputText value="#{pessoaManagedBean.pessoa.cpf}" required="true" label="CPF"/>
+                    
+                    <h:outputText value="RG: " />
+                    <p:inputText value="#{pessoaManagedBean.pessoa.rg}" required="true" label="RG"/>
+                    
+                    <h:outputText value="Email: " />
+                    <p:inputText value="#{pessoaManagedBean.pessoa.email}" required="true" label="Email"/>
+                    
+        			<h:outputLabel for="pwd1" value="#{msg['pages.cadastroPessoa.senha']}" />
+       			 	<p:password id="pwd1" value="#{pessoaManagedBean.pessoa.senha}" match="pwd1" label="Senha" required="true" />
+       			 	
+       			 	<p:outputLabel for="button" value="#{msg['pages.cadastroTime.dataNascimento']}" />
+        			<p:calendar id="button" value="#{calendarView.date3}" showOn="button" />
+        			
+        			
+        			 <h:panelGrid columns="2" style="margin-bottom:8px" cellpadding="6">
+        				<h:outputText value="#{msg['pages.cadastroCategoria.sexo']}" />
+        				<p:selectOneRadio for="button" value="#{pessoaManagedBean.pessoa.genero}">
+            				<f:selectItem itemLabel="M " itemValue="M" />
+            				<f:selectItem itemLabel=" F" itemValue="F" />
+        				</p:selectOneRadio>
+               		</h:panelGrid>
+               	</p:panelGrid> 
+               	<p:commandButton value="#{msg['pages.cadastroTime.btnSalvar']}" 
+	                 action="#{pessoaManagedBean.salvar}" 
+	                 update=":formCadastro, :tabelaCadastro"/>
+	           <p:commandButton value="Entrar" action="inicio.xhtml" immediate="true" />
+	 </h:form>  
+	    <p:dataTable value="#{pessoaManagedBean.pessoas}"
+                var="aux"
+                id="tabelaCadastro"
+   >
+      <p:column headerText="#{msg['pages.cadastroTime.nome']}">
+        <p:outputLabel value="#{aux.nome}" />
+      </p:column>
+      
+       <p:column headerText="CPF">
+        <p:outputLabel value="#{aux.cpf}" />
+      </p:column>
+
+       <p:column headerText="RG">
+        <p:outputLabel value="#{aux.rg}" />
+      </p:column>
+      
+      <p:column headerText="E-mail">
+        <p:outputLabel value="#{aux.email}" />
+      </p:column>
+      
+      <p:column headerText="#{msg['pages.cadastroPessoa.senha']}">
+        <p:outputLabel value="#{aux.senha}" />
+      </p:column>
+      
+      <p:column headerText="#{msg['pages.cadastroTime.dataNascimento']}">
+        <p:outputLabel value="#{aux.dataNascimento}" />
+      </p:column>
+      
+      <p:column headerText="#{msg['pages.cadastroCategoria.sexo']}">
+        <p:outputLabel value="#{aux.sexo}" />
+      </p:column>
+      
+      </p:dataTable>
+	 
+	 </ui:define>
+</ui:composition>
+
+

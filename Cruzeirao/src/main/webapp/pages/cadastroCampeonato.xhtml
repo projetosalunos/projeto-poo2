@@ -1,0 +1,119 @@
+
+<ui:composition template="templateMenu.xhtml"
+	xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:p="http://primefaces.org/ui"
+	xmlns:ui2="http://java.sun.com/jsf/facelets"
+	xmlns:tm="http://java.sun.com/jsf/composite/terminal/1_0/components"
+>
+	
+	<ui:define name="title">
+		<h:outputText value="#{msg['pages.cadastroCampeonato.title']}" />
+	</ui:define>
+	
+	<ui:define name="principal">
+	  
+	  <h1><p:outputLabel value="#{msg['pages.cadastroCampeonato.menu']}"/></h1>
+	  
+	<h:form id="formCampeonato">
+	  
+	   <p:growl id="growl" sticky="true" showDetail="true"/>
+	  		  
+		<p:wizard flowListener="#{campeonatoManagedBean.onFlowProcess}">
+		<p:tab id="personal" title="#{msg['pages.cadastroCampeonato.dadosCampeonato']}">
+            <p:panel header="#{msg['pages.cadastroCampeonato.dadosCampeonato']}">
+                <p:messages />
+                <h:panelGrid columns="2" >
+                    <h:outputText value="#{msg['pages.cadastroCampeonato.nome']}*" />
+                    <p:inputText value="#{campeonatoManagedBean.campeonato.nome}" required="true" />
+ 
+                    <h:outputText value="#{msg['pages.cadastroCampeonato.dataInicioCampeonato']}*" />
+                    <p:calendar id="button" value="#{campeonatoManagedBean.campeonato.dataInicioCampeonato}" required="true"  showOn="button" mindate="6/1/17"/>
+		       
+					<h:outputText value="#{msg['pages.cadastroCampeonato.dataFimCampeonato']}*" />
+                    <p:calendar id="button2" value="#{campeonatoManagedBean.campeonato.dataFimCampeonato}" required="true"  showOn="button" mindate="6/1/17"/>
+		                       
+                </h:panelGrid>
+            </p:panel>
+        </p:tab>
+ 
+
+        <p:tab id="contact" title="#{msg['pages.cadastroCampeonato.inscricao']}">
+            <p:panel header="#{msg['pages.cadastroCampeonato.inscricao']}">
+                <p:messages />
+                <h:panelGrid columns="2" >
+                          				      
+		       	    <p:outputLabel value="#{msg['pages.cadastroCampeonato.inscricao']}"/>
+					<h:panelGrid columns="1" style= "margin-bottom: 10px">
+						<p:inputNumber id="nmb1" value="#{campeonatoManagedBean.campeonato.valorTaxa}" symbol=" R$" />
+						<p:slider for="nmb1" />
+					</h:panelGrid>
+ 
+                    <h:outputText value="#{msg['pages.cadastroCampeonato.dataInicioInscricao']}*" />
+                    <p:calendar id="button3" value="#{campeonatoManagedBean.campeonato.dataInicioInscricao}" required="true"  showOn="button" mindate="6/1/17"/>
+		       
+					<h:outputText value="#{msg['pages.cadastroCampeonato.dataFimInscricao']}*" />
+                    <p:calendar id="button4" value="#{campeonatoManagedBean.campeonato.dataFimInscricao}" required="true"  showOn="button" mindate="6/1/17"/>
+		            
+		       </h:panelGrid> 
+            </p:panel>
+        </p:tab>
+       
+ 
+        <p:tab id="confirm" title="#{msg['pages.cadastroCampeonato.confirmacao']}">
+            <p:panel header="#{msg['pages.cadastroCampeonato.confirmacao']}">
+                <h:panelGrid id="confirmation" columns="3" columnClasses="grid,grid,grid">
+                    <h:panelGrid columns="2" columnClasses="label, value">
+                        <h:outputText value="#{msg['pages.cadastroCampeonato.nome']}" />
+                        <h:outputText value="#{campeonatoManagedBean.campeonato.nome}" />
+ 
+                        <h:outputText value="#{msg['pages.cadastroCampeonato.dataInicioCampeonato']}" />
+                        <h:outputText value="#{campeonatoManagedBean.campeonato.dataInicioCampeonato}" />
+ 
+                        <h:outputText value="#{msg['pages.cadastroCampeonato.dataFimCampeonato']}" />
+                        <h:outputText value="#{campeonatoManagedBean.campeonato.dataFimCampeonato}" />
+                    </h:panelGrid>
+ 
+                    <h:panelGrid columns="2" columnClasses="label, value">
+                        <h:outputText value="#{msg['pages.cadastroCampeonato.inscricao']}" />
+                        <h:outputText value="#{campeonatoManagedBean.campeonato.valorTaxa}" />
+ 
+                        <h:outputText value="#{msg['pages.cadastroCampeonato.dataInicioInscricao']}" />
+                        <h:outputText value="#{campeonatoManagedBean.campeonato.dataInicioInscricao}" />
+ 
+ 						<h:outputText value="#{msg['pages.cadastroCampeonato.dataFimInscricao']}" />
+                        <h:outputText value="#{campeonatoManagedBean.campeonato.dataFimInscricao}" />              
+                    </h:panelGrid>
+ 
+                </h:panelGrid>
+ 
+                <p:commandButton value="#{msg['pages.cadastroCampeonato.btnSalvar']}" actionListener="#{campeonatoManagedBean.salvar}" update=":formCampeonato, formTableCampeonato:tabelaCampeonato,growl" process="@this"/>
+                <p:commandButton value="#{msg['pages.cadastroCategoria.menu']}" action="/pages/cadastroCategoria.xhtml" />
+            </p:panel>
+        </p:tab>
+    </p:wizard>
+	
+	
+ 
+</h:form>
+
+	<h:form id="formTableCampeonato">
+	
+   <p:dataTable value="#{campeonatoManagedBean.campeonatos}"
+                var="aux"
+                id="tabelaCampeonato"
+              
+                editable="true" >
+      
+   </p:dataTable>	
+ </h:form>
+	</ui:define>
+</ui:composition>
+
+
+
+
+
+

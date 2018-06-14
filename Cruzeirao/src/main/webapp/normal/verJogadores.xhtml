@@ -1,0 +1,51 @@
+
+<ui:composition template="templateNormal.xhtml"
+	xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:p="http://primefaces.org/ui"
+	xmlns:ui2="http://java.sun.com/jsf/facelets"
+>
+	
+	<ui:define name="title">
+		<h:outputText value="#{msg['pages.verJogos.title']}" />
+	</ui:define>
+	
+
+	<ui:define name="principal">
+	  
+	  <h1><p:outputLabel value="#{msg['pages.verJogos.menu']}"/></h1>
+	  
+	
+<h3><p:outputLabel value="#{msg['pages.verJogadores.dados']}"/></h3>
+
+<p:panelGrid columns="2">
+    <f:facet name="header">
+    </f:facet>
+ 
+    <h:outputText value="#{msg['pages.cadastroCampeonato.nome']}" />
+    <h:outputText value="Pele pendulo Dourado" />
+ 	
+    <h:outputText value="#{msg['pages.verChaves.times']}" />
+    <h:outputText value="TimeA" />
+ 
+    <h:outputText value="#{msg['pages.verJogadores.posicao']}" />
+    <h:outputText value="#{msg['pages.verJogadores.posicaoAtacante']}" />
+ 
+    <h:outputText value="#{msg['pages.verJogadores.numero']}" />
+    <h:outputText value="24" />
+    
+    <h:outputText value="#{msg['pages.verJogadores.golsPartida']}" />
+    <h:outputText value="1" />
+    
+</p:panelGrid>
+	   
+	</ui:define>
+</ui:composition>
+
+
+
+
+
+

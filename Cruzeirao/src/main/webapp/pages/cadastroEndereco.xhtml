@@ -1,0 +1,41 @@
+<ui:composition template="templateInicio.xhtml"
+	xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:p="http://primefaces.org/ui"
+	xmlns:ui2="http://java.sun.com/jsf/facelets"
+	xmlns:tm="http://java.sun.com/jsf/composite/terminal/1_0/components">
+	
+	<ui:define name="title">
+		<h:outputText value="#{msg['pages.cadastroEndereco.title']}" />
+	</ui:define>
+
+	<ui:define name="principal"> 
+	<h:form>	
+	
+	            <p:panelGrid columns="4">
+	                                  	
+                 	<h:outputText value="Estado: " />
+                    <p:inputText value="  " required="true" label="Estado"/>
+                 	
+                 	<h:outputText value="Cidade: " />
+                    <p:inputText value="  " required="true" label="Cidade"/>
+                    
+                    <h:outputText value="Bairro: " />
+                    <p:inputText value="  " required="true" label="Bairro"/>
+                    
+                    <h:outputText value="Rua: " />
+                    <p:inputText value="  " required="true" label="Rua"/>
+                    
+                    <p:commandButton value="#{msg['pages.cadastroCampeonato.btnSalvar']}"
+                    action="cadastroCategoria.xhtml"
+                    />
+                    <p:commandButton value="Skip"
+                    action="cadastroCategoria.xhtml"
+                    />
+                             	
+               	</p:panelGrid> 
+	 </h:form>  
+	 </ui:define>
+</ui:composition>

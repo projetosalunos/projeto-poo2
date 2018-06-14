@@ -1,0 +1,61 @@
+
+<ui:composition template="templateNormal.xhtml"
+	xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:p="http://primefaces.org/ui"
+	xmlns:ui2="http://java.sun.com/jsf/facelets"
+>
+	
+	<ui:define name="title">
+		<h:outputText value="#{msg['pages.verPartidas.title']}" />
+	</ui:define>
+	
+
+	<ui:define name="principal">
+	  
+ 
+<h1><p:outputLabel value="#{msg['pages.verPartidas.title']}"/></h1>
+	
+<h3><p:outputLabel value="#{msg['pages.verPartidas.resultado']}"/></h3>
+	
+	<p:dataTable value="">
+		 <p:column headerText="#{msg['pages.verChaves.times']}">
+	        <h:outputText value="TimeA" />
+	    </p:column>
+	
+		 <p:column headerText="#{msg['pages.verChaves.gol']}">
+	        <h:outputText value="1" />
+	    </p:column>
+	
+	    <p:column headerText="#{msg['pages.verPartidas.jogador']}">
+	        <h:outputText value="Pele pendulo Dourado" />
+	    </p:column>
+	
+	    <p:column headerText="#{msg['pages.verJogos.acessoCategoria']}">
+	        <p:commandButton value="#{msg['pages.verJogos.acessarCategoria']}" action="verJogadores.xhtml"/>
+	    </p:column>
+	 
+	</p:dataTable>
+
+		<p:dataTable value="">
+		 <p:column headerText="#{msg['pages.verChaves.times']}">
+	        <h:outputText value="TimeB" />
+	    </p:column>
+	
+		 <p:column headerText="#{msg['pages.verChaves.gol']}">
+	        <h:outputText value="0" />
+	    </p:column>
+	
+	    <p:column headerText="#{msg['pages.verPartidas.jogador']}">
+	        <h:outputText value="" />
+	    </p:column>
+	
+	    <p:column headerText="#{msg['pages.verJogos.acessoCategoria']}">
+	    </p:column>
+	 
+	</p:dataTable>
+	
+	</ui:define>
+</ui:composition>

@@ -1,0 +1,34 @@
+<ui:composition xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:p="http://primefaces.org/ui">
+	<h:form>  
+    <p:growl id="messages"/>
+ 
+    <p:menubar>
+        <p:submenu label="Cruzeirao" icon="ui-icon-document">
+            <p:submenu label="#{msg['pages.comuns.menuLateral.criar']}" icon="ui-icon-contact">
+                <p:menuitem value="#{msg['pages.comuns.menuLateral.campeonato']}" url="/pages/cadastroCampeonato.xhtml" />
+                <p:menuitem value="#{msg['pages.comuns.menuLateral.categoria']}" url="/pages/cadastroCategoria.xhtml" />
+                <p:menuitem value="#{msg['pages.cadastroTime.menu']}" url="/pages/cadastroTime.xhtml" />
+            </p:submenu>
+            <p:menuitem value="Ver jogos" url="verJogosCategori.xhtml" />
+ 		</p:submenu>
+        <p:submenu label="#{msg['pages.comuns.menuLateral.editar']}" icon="ui-icon-pencil">
+            <p:menuitem value="#{msg['pages.comuns.menuLateral.times']}" url="/pages/editarTime.xhtml" icon="ui-icon-arrowreturnthick-1-e" />
+            <p:menuitem value="#{msg['pages.comuns.menuLateral.categoria']}" url="/pages/editarCategoria.xhtml" icon="ui-icon-arrowreturnthick-1-e" />
+            <p:menuitem value="#{msg['pages.comuns.menuLateral.usuarios']}" url="/pages/editarUsuarios.xhtml" icon="ui-icon-arrowreturnthick-1-e" />
+        </p:submenu>
+ 
+        <p:submenu label="#{msg['pages.comuns.menuLateral.ajuda']}" icon="ui-icon-help">
+            <p:menuitem value="#{msg['pages.comuns.menuLateral.site']}" url="/pages/ajuda.xhtml" />
+            <p:menuitem value="#{msg['pages.comuns.menuLateral.idioma']}" url="/pages/linguagem.xhtml" />
+        </p:submenu>
+ 
+        <p:menuitem value="#{msg['pages.comuns.menuLateral.sair']}" url="/login.xhtml" icon="ui-icon-close" />
+
+    </p:menubar>
+</h:form>
+</ui:composition>
+
